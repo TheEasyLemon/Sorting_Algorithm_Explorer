@@ -12,7 +12,7 @@ class Wiki_Formatter(tk.Text):
     widget for display.
 
     Because tk.Text cannot directly handle bold words, italics, or underlining,
-    I've implemented a simple markdown language to bridge the gap.
+    I've implemented a simple markup language to bridge the gap.
     """
 
     def __init__(self, name, func_name, *args, **kwargs):
