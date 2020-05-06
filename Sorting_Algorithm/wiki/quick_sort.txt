@@ -1,0 +1,49 @@
+#QUICK SORT#
+
+**Quick sort** works by selecting a 'pivot' element from the array and partitioning the other elements into two sub-arrays, according to whether they are less than or greater than the pivot. The sub-arrays are then sorted recursively.
+
+This implementation will use the Lomuto partition scheme, where the pivot is the last element of the list in question. "l" (for low) is the first element of the list "li", and "h" is the last (for high).
+
+##Analysis##
+
+`def quick_sort(li):`
+    
+    `def partition(lst, low, high):`
+        `pivot = lst[high - 1]`
+        `i = low`
+
+        `for j in range(low, high):`
+            `if lst[j] < pivot:`
+                `lst[i], lst[j] = lst[j], lst[I]`
+                `i += 1`
+
+        `lst[i], lst[high - 1] = lst[high - 1], lst[I]`
+
+        `return i`
+
+    `def sorter(li, l, h):`
+        `if l < h:`
+            `p = partition(li, l, h)`
+            `sorter(li, l, p)`
+            `sorter(li, p + 1, h)`
+
+        `return li`
+
+    `return sorter(li, 0, len(li))`
+
+The function `partition` separates the list "lst" so that every element greater than an arbitrarily selected pivot (the element at index high) ends up on the right of the pivot index, and every element smaller ends up on the left. It is important to note that partition excludes `high`, just like `range`.
+
+The function `sorter` is a driver function that uses recursion to sort the entire array.
+It progressively sorts the left and right parts of the partition.
+
+
+##Details##
+
+Worst-case performance: **O(n^2)**
+Best-case performance: **O(nlog(n))**
+Average performance: **O(nlog(n)**
+
+##More Resources##
+
+- https://en.wikipedia.org/wiki/Quicksort
+- https://www.geeksforgeeks.org/quick-sort/

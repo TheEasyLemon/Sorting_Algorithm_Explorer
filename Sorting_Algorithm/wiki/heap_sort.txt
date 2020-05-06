@@ -1,0 +1,73 @@
+#HEAP SORT#
+
+**Heap sort** divides its input into a sorted and an unsorted region, and it iteratively shrinks the unsorted region by extracting the largest element from it and inserting it into the sorted region. 
+
+It does not waste time with a linear-time scan of the unsorted region; rather, heap sort maintains the unsorted region in a heap data structure to more quickly find the largest element in each step.
+
+To implement a heap using arrays, we will use the rule *li[k] >= li[2k+1]* and *li[k] >= li[2k+2]*  (left child and right child respectively).
+
+More generally, the array must satisfy the heap quality: 
+
+For any given node C, if P is a parent node of C, then the value of P is greater than or equal to the key of C (for max heaps).
+
+Graphically, this would look like:
+
+
+                                              0
+                             1                                2
+
+                     3              4                5               6
+ 
+                7       8       9       10      11      12      13      14
+ 
+             15 16   17 18   19 20   21  22  23  24  25  26  27  28  29  30
+
+The numbers represent the index of an array, not the values that they hold. In a max heap, the largest value would reside at index 0.
+
+Heaps can be thought of as like binary trees, but the element at index, say, 7 is not guaranteed to be larger than the element at index, say, 10 -- even though 7 comes before 10. A heap is not totally ordered, but rather ordered in a specific way, while binary trees are totally ordered.
+
+##Analysis##
+`def heap_sort(li):`
+
+    `def heapify(lst, heap_size, root):`
+        `largest = root`
+        `left_child = 2 * largest + 1`
+        `right_child = 2 * largest + 2`
+
+        `if left_child < heap_size and lst[largest] < lst[left_child]:`
+            `largest = left_child`
+
+        `if right_child < heap_size and lst[largest] < lst[right_child]:`
+            `largest = right_child`
+
+        `if largest != root:`
+            `lst[root], lst[largest] = lst[largest], lst[root]`
+            `heapify(lst, heap_size, largest)`
+
+    `for i in range(len(li), -1, -1):`
+        `heapify(li, len(li), i)`
+
+    `for i in range(len(li) - 1, 0, -1):`
+        `li[i], li[0] = li[0], li[i]`
+        `heapify(li, i, 0)`
+
+    `return li`
+
+We start with a utility function that "heapifies" a list, or arranges it so that it satisfies the heap quality. We assume the largest element is at index root, and then we calculate its children. We then compare the children to largest and swap if necessary. If there have been swaps made, we swap largest with root, and heapify again. If no swaps were made, then it can be assumed the heap quality has been satisfied. 
+
+Then, we have a `for` loop that loops backwards through the list. We heapify the list starting from the last element.
+
+Then, we have another `for` loop that loops backwards through the list. We swap the element at index i with the element at index 0 - or the greatest number. In this way, we send the largest numbers to the back one by one. After we send each one to the back, we heapify the list again, but only from the range 0 to i. 
+
+In essence, we perform a selection sort as we choose the largest node of the heap and send it to the back. It is more efficient, however, because the heap quality is satisfied.
+
+##Details##
+
+Worst-case performance: **O(nlog(n))**
+Best-case performance: **O(nlog(n))**
+Average performance: **O(nlog(n))**
+
+##More Resources##
+
+- https://en.wikipedia.org/wiki/Heapsort
+- https://www.geeksforgeeks.org/heap-sort/

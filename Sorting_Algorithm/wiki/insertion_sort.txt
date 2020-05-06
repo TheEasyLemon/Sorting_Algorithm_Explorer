@@ -1,0 +1,42 @@
+#INSERTION SORT#
+
+**Insertion sort** is a simple sorting algorithm that builds the final sorted list one element at a time. Although it is less efficient than other advanced sorts, it is considered the most superior out of the simple sorts (bubble sort, selection sort). 
+
+Its primary benefit is that it is adaptive - the time complexity is O(kn) when each element in the input is no more than *k* places away from its sorted position.
+
+It is also *stable*, meaning that two equal elements' places are not changed during sorting.
+
+Most people use this kind of sort when sorting a deck of cards.
+
+##Analysis##
+
+`def insertion_sort(li):`
+
+    `sorted_list = [li[0]]`
+
+    `for i in range(1, len(li)):`
+        `current_item = li[i]`
+
+        `for j in range(len(sorted_list)):`
+            `if current_item < sorted_list[j]:`
+                `sorted_list.insert(j, current_item)`
+                `break`
+        else:
+            `sorted_list.append(current_item)`
+
+    `return sorted_list`
+
+We start with a `sorted_list` list that contains just the first element.
+
+For all remaining elements, we loop through `sorted_list` and find its place in it. If it is greater than everything in `sorted_list`, we just append `current_item` onto it.
+
+##Details##
+
+Worst-case performance: **O(n^2)**
+Best-case performance: **O(n)**
+Average performance: **O(n^2)**
+
+##More Resources##
+
+- https://en.wikipedia.org/wiki/Insertion_sort
+- https://www.geeksforgeeks.org/insertion-sort/

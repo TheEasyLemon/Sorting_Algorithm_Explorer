@@ -1,0 +1,48 @@
+#MERGE SORT#
+
+**Merge sort** divides the unsorted list into n sublists, each containing one element (a list of one element is considered sorted). Repeatedly merges sublists to produce new sorted sublists until there is only one sublist remaining.
+
+I use a top-down implementation for recursion. This one is my favorite, personally!
+
+##Analysis##
+
+`def merge_sort(li):`
+
+    `if len(li) <= 1:`
+        `return li`
+
+    `left = []`
+    `right = []`
+
+    `for i in range(len(li)):`
+        `if i < len(li) // 2:`
+            `left.append(li[I])`
+        `else:`
+            `right.append(li[I])`
+
+    `left = merge_sort(left)`
+    `right = merge_sort(right)`
+
+    `result = []`
+
+    `while len(left) > 0 and len(right) > 0:`
+        `if left[0] <= right[0]:`
+            `result.append(left[0])`
+            `del left[0]`
+        `else:`
+            `result.append(right[0])`
+            `del right[0]`
+
+    `result.extend(left)`
+    `result.extend(right)`
+
+    `return result`
+
+We first start with a base case of when the length of `li` is less than or equal to one. We then designate a left and right list, and we iterate through `li`, sending even-indexed elements to `left` and odd-indexed elements to `right`. We then sort those lists. After they are sorted, we combine them in a `while` loop. We then use `.extend()` to append any remaining parts of `left` or `right`.
+
+##Details##
+
+Worst-case performance: **O(nlog(n))**
+Best-case performance: **O(nlog(n))**
+Average performance: **O(nlog(n))**
+

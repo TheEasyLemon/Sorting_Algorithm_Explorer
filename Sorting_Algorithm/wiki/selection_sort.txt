@@ -1,0 +1,33 @@
+#SELECTION SORT#
+
+**Selection sort** finds the minimum value, swaps it with the value in the first position, and repeats these steps for the remainder of the list.
+
+##Analysis##
+
+`def selection_sort(li):`
+
+    `sorted_list = li`
+
+    `for i in range(len(sorted_list)):`
+        `min_index = i`
+
+        `for j in range(i, len(sorted_list)):`
+            `if sorted_list[j] < sorted_list[min_index]:`
+                `min_index = j`
+
+        `sorted_list[i], sorted_list[min_index] = sorted_list[min_index], sorted_list[I]`
+
+    `return sorted_list`
+
+We start with a sorted list (which isn't sorted yet...) and then we loop through the list, finding the smallest element each time. We then swap that element with the current element at index *i*. Once we've iterated through the whole list, the list is actually sorted.
+
+##Details##
+
+Worst-case performance: **O(n^2)**
+Best-case performance: **O(n^2)**
+Average performance: **O(n^2)**
+
+##More Resources##
+
+- https://en.wikipedia.org/wiki/Selection_sort
+- https://www.geeksforgeeks.org/selection-sort/

@@ -1,0 +1,35 @@
+#BUBBLE SORT#
+
+**Bubble sort** is the easiest sorting algorithm to understand...and is by far the &&worst&&. With the constraints of this simulation, it has on average 4 times worse performance than the next best sort, **selection sort**.
+
+Bubble sort so named because each pass makes the largest value "bubble" up to the top", while the smallest values sink to the bottom.
+
+##Analysis##
+`def bubble_sort(li):`
+
+    `unsorted = True`
+    `while unsorted:`
+	`unsorted = False`
+	`for i in range(len(li) - 1):`
+	    `if li[i] > li[i + 1]:`
+	        `unsorted = True`
+	        `li[i], li[i + 1] = li[i + 1], li[i]`
+    `return li`
+
+`unsorted` is a boolean that keeps track of if the list is sorted. The `while` loop will have to go through an entire cycle where unsorted stays False in order to be sorted.
+
+The `for` loop goes through the entire list, swapping in-place the elements that are out of order.
+
+Looking at the code, we can see that usually we will be comparing values **O(n^2)** times.
+The while loop will run up to n times, while the for loop exactly n - 1 times.
+
+##Details##
+
+Worst-case performance: **O(n^2)**
+Best-case performance: **O(n)**
+Average performance: **O(n^2)**
+
+##More Resources##
+
+- https://en.wikipedia.org/wiki/Bubble_sort
+- https://www.geeksforgeeks.org/bubble-sort/

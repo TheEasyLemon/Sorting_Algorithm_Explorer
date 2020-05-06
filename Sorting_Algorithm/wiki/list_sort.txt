@@ -1,0 +1,27 @@
+#LIST.SORT()#
+
+##Details##
+
+The `.sort()` method of the `list` built-in class uses a sorting algorithm called *timsort*, which has become a popular sorting algorithm. It is a hybrid sorting algorithm that relies on merge and insertion sort. It performs well on multiple types of data.
+
+It was implemented by Tim Peters in 2002 for use in the Python programming language. The algorithm finds subsequences of the data that are already ordered (runs) and uses them to sort the remainder more efficiently.
+
+In Python 3.8.2, the syntax is:
+
+`sort(*, key=None, reverse=False)`
+
+The `sort()` method is guaranteed to be stable. A sort is stable if it guarantees not to change the relative order of elements that compare equal — this is helpful for sorting in multiple passes. (Python 3.8.2 Docs)
+
+Generally, this is the &&second-fastest implemented sort&& that I've tested. The `sorted()` built-in function also relies on this implementation.
+
+##Details##
+
+Worst-case performance: **O(nlog(n))**
+Best-case performance: **O(n)**
+Average performance: **O(nlog(n))**
+
+##More Resources##
+- https://github.com/python/cpython/blob/master/Objects/listobject.c
+- https://github.com/python/cpython/blob/master/Objects/listsort.txt
+- https://www.w3schools.com/python/ref_list_sort.asp
+- https://docs.python.org/3/howto/sorting.html
